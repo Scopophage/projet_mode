@@ -1,263 +1,82 @@
-/* Définition de la palette de couleurs ensoleillée */
 :root {
-    --bg-color: #fbf5f2; /* Beige clair et chaud */
-    --text-color: #4a4a4a; /* Brun doux pour le texte */
-    --accent-color: #f1c40f; /* Jaune doré pour les accents */
-    --secondary-accent: #e67e22; /* Orange chaleureux */
-    --white: #ffffff;
-    --gray-light: #f2f2f2;
-    --gray-medium: #ddd;
+    --sun: #FFC300;
+    --sand: #F7F3F0;
+    --dark: #1A1A1A;
+    --white: #FFFFFF;
 }
 
-/* Réinitialisation de base */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
     font-family: 'Inter', sans-serif;
-    overflow-x: hidden;
+    background-color: var(--sand);
+    color: var(--dark);
+    line-height: 1.6;
 }
 
-/* Stylisation des titres et éléments majeurs */
-h1, h2, h3, .logo, .marquee, .btn-primary {
-    font-family: 'Oswald', sans-serif;
-    text-transform: uppercase;
-}
-
-a {
-    color: var(--text-color);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-a:hover {
-    color: var(--secondary-accent);
-}
-
-/* Stylisation de la barre de navigation */
+/* Navbar moderne */
 nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.5rem 3rem;
-    z-index: 100;
-    background: transparent;
-    transition: background 0.3s ease, padding 0.3s ease;
-}
-
-nav.scrolled {
-    background: rgba(251, 245, 242, 0.95);
+    position: fixed; top: 0; width: 100%;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 5%; z-index: 1000;
+    background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(10px);
-    padding: 1rem 3rem;
-    border-bottom: 1px solid var(--gray-light);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
-.nav-links a, .nav-icons a {
-    font-size: 0.9rem;
-    font-weight: 600;
-    letter-spacing: 1px;
-}
+.logo { font-family: 'Oswald', sans-serif; font-size: 1.5rem; font-weight: 700; letter-spacing: 2px; }
+.nav-links a { text-decoration: none; color: var(--dark); margin-left: 30px; font-weight: 600; font-size: 0.9rem; }
+.cart-btn { background: var(--dark); color: white !important; padding: 8px 15px; border-radius: 5px; }
 
-.nav-links {
-    display: flex;
-    gap: 2rem;
-}
-
-.logo a {
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 2px;
-}
-
-/* Stylisation du bandeau défilant */
-.marquee {
-    margin-top: 80px; /* Espace pour la navbar */
-    background: var(--accent-color);
-    color: var(--text-color);
-    padding: 0.5rem 0;
-    overflow: hidden;
-    white-space: nowrap;
-}
-
-.marquee-content {
-    display: inline-block;
-    animation: marquee 15s linear infinite;
-    font-size: 0.85rem;
-    letter-spacing: 2px;
-    font-weight: 600;
-}
-
-@keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-}
-
-/* Stylisation de la section Hero */
+/* Hero */
 .hero {
-    height: 85vh;
-    /* Utilisation d'un dégradé chaleureux comme fond pour l'image */
-    background: linear-gradient(135deg, rgba(251, 197, 10, 0.3), rgba(230, 126, 34, 0.3)), url('https://source.unsplash.com/1920x1080/?fashion,urban,sunlight') center/cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+    position: relative; height: 90vh;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden; text-align: center; color: white;
 }
 
-.hero-content h1 {
-    font-size: 5rem;
-    letter-spacing: 4px;
-    margin-bottom: 1rem;
-    color: var(--secondary-accent);
+.hero-bg { position: absolute; width: 100%; height: 100%; object-fit: cover; z-index: -1; }
+.hero-overlay { position: absolute; width: 100%; height: 100%; background: rgba(0,0,0,0.3); z-index: 0; }
+
+.hero-content { position: relative; z-index: 1; }
+.hero-content h1 { font-family: 'Oswald', sans-serif; font-size: clamp(3rem, 8vw, 6rem); line-height: 1; margin-bottom: 20px; }
+.btn-main { 
+    display: inline-block; background: var(--sun); color: var(--dark); 
+    padding: 15px 40px; text-decoration: none; font-weight: 700; 
+    margin-top: 30px; transition: transform 0.3s;
+}
+.btn-main:hover { transform: scale(1.05); }
+
+/* Marquee */
+.marquee { background: var(--dark); color: white; padding: 15px 0; overflow: hidden; }
+.marquee-text { 
+    display: inline-block; white-space: nowrap; 
+    animation: scroll 20s linear infinite; font-family: 'Oswald', sans-serif;
+    font-weight: 700; letter-spacing: 3px;
 }
 
-.hero-content p {
-    font-size: 1.2rem;
-    color: var(--text-color);
-    margin-bottom: 2rem;
+@keyframes scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
 }
 
-/* Stylisation du bouton principal */
-.btn-primary {
-    background: var(--accent-color);
-    color: var(--text-color);
-    padding: 1rem 3rem;
-    font-size: 1.1rem;
-    letter-spacing: 1px;
-    border: none;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s ease;
-    display: inline-block;
-}
+/* Shop */
+.shop { padding: 100px 5%; }
+.section-title { font-family: 'Oswald', sans-serif; font-size: 2.5rem; margin-bottom: 50px; text-align: center; }
 
-.btn-primary:hover {
-    background: var(--secondary-accent);
-    transform: translateY(-2px);
-}
-
-/* Stylisation des sections générales */
-.products-section, .collections-section, .about-section, .testimonials-section {
-    padding: 5rem 3rem;
-}
-
-h2 {
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
-    text-align: center;
-    letter-spacing: 2px;
-}
-
-/* Stylisation de la grille de produits */
 .product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;
 }
 
-.product-card {
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
+.product-card { background: white; padding: 15px; border-radius: 10px; transition: 0.3s; cursor: pointer; }
+.product-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
 
-.product-card:hover {
-    transform: translateY(-5px);
-}
+.img-wrapper { position: relative; aspect-ratio: 3/4; overflow: hidden; border-radius: 5px; margin-bottom: 20px; }
+.img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
 
-.img-container {
-    position: relative;
-    overflow: hidden;
-    background: var(--gray-light);
-    aspect-ratio: 3/4;
-}
+.badge { position: absolute; top: 10px; left: 10px; background: var(--sun); padding: 5px 12px; font-weight: 800; font-size: 0.7rem; border-radius: 3px; }
+.badge.sold { background: #ff4444; color: white; }
 
-.img-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease, opacity 0.5s ease;
-}
-
-.product-card:hover .img-container img {
-    transform: scale(1.05);
-    opacity: 0.8;
-}
-
-/* Stylisation des badges */
-.badge {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background: var(--accent-color);
-    color: var(--text-color);
-    padding: 0.3rem 0.8rem;
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 1px;
-}
-
-.badge.sold-out {
-    background: #e74c3c;
-    color: var(--white);
-}
-
-/* Stylisation des infos produits */
-.product-info {
-    margin-top: 1.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.product-info h3 {
-    font-size: 1.1rem;
-    letter-spacing: 1px;
-}
-
-.product-info p {
-    font-weight: 300;
-    color: var(--gray-medium);
-}
-
-/* Stylisation des autres sections */
-.collections-section, .about-section, .testimonials-section {
-    background-color: var(--white);
-}
-
-.collection-grid, .testimonial-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-}
-
-.about-content {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-/* Stylisation du footer */
-footer {
-    background: var(--gray-light);
-    padding: 4rem 3rem 2rem;
-    border-top: 1px solid var(--gray-medium);
-}
-
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 2rem;
-}
-
-.footer-bottom {
-    text-align: center;
-    color: var(--gray-medium);
-    margin-top: 2rem;
-}
+.product-meta { display: flex; justify-content: space-between; align-items: center; }
+.product-meta h3 { font-size: 1.1rem; }
+.product-meta p { font-weight: 700; color: var(--sun); }
