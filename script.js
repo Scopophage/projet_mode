@@ -24,12 +24,34 @@ productCards.forEach(card => {
         }
 
         cartCount++;
-        cartIcon.textContent = `CART (${cartCount})`;
+        cartIcon.textContent = `PANIER (${cartCount})`;
         
         // Petit effet visuel
-        cartIcon.style.color = '#888';
+        cartIcon.style.color = '#e67e22'; // Orange chaleureux
         setTimeout(() => {
-            cartIcon.style.color = '#fff';
+            cartIcon.style.color = '#4a4a4a'; // Couleur d'origine
         }, 200);
     });
+});
+
+// Animation d'entrée au défilement
+const observerOptions = {
+    threshold: 0.1 // 10% de l'élément doit être visible pour déclencher l'animation
+};
+
+const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('in-view'); // Ajoute la classe 'in-view'
+            observer.unobserve(entry.target); // Cesse d'observer après l'animation
+        }
+    });
+}, observerOptions);
+
+// Cible les sections et les cartes de produits pour l'animation
+const elementsToAnimate = document.querySelectorAll('.collections-section h2, .collection-card, .products-section h2, .product-card, .about-content h2, .testimonial-card');
+
+elementsToAnimate.forEach(element => {
+    element.classList.add('fade-in'); // Ajoute la classe de base pour l'animation
+    observer.observe(element); // Commence à observer
 });
