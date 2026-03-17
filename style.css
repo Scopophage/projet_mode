@@ -1,0 +1,253 @@
+/* Variables de couleurs */
+:root {
+    --bg-color: #050505;
+    --text-color: #ffffff;
+    --accent-color: #f1f1f1;
+    --gray: #888888;
+}
+
+/* Reset de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, .logo, .marquee, .btn-primary {
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+}
+
+a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--gray);
+}
+
+/* Navigation */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 3rem;
+    z-index: 100;
+    background: transparent;
+    transition: background 0.3s ease, padding 0.3s ease;
+}
+
+nav.scrolled {
+    background: rgba(5, 5, 5, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1rem 3rem;
+    border-bottom: 1px solid #222;
+}
+
+.nav-links a, .nav-icons a {
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.logo a {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+/* Marquee (Bandeau défilant) */
+.marquee {
+    margin-top: 80px; /* Espace pour la navbar */
+    background: var(--text-color);
+    color: var(--bg-color);
+    padding: 0.5rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.marquee-content {
+    display: inline-block;
+    animation: marquee 15s linear infinite;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* Hero Section */
+.hero {
+    height: 85vh;
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?auto=format&fit=crop&w=1920&q=80') center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 5rem;
+    letter-spacing: 4px;
+    margin-bottom: 1rem;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    color: var(--accent-color);
+    margin-bottom: 2rem;
+}
+
+.btn-primary {
+    background: var(--text-color);
+    color: var(--bg-color);
+    padding: 1rem 3rem;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    display: inline-block;
+}
+
+.btn-primary:hover {
+    background: var(--gray);
+    transform: translateY(-2px);
+}
+
+/* Produits */
+.products-section {
+    padding: 5rem 3rem;
+}
+
+.products-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.product-card {
+    cursor: pointer;
+}
+
+.img-container {
+    position: relative;
+    overflow: hidden;
+    background: #111;
+    aspect-ratio: 3/4;
+}
+
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+.product-card:hover .img-container img {
+    transform: scale(1.05);
+    opacity: 0.8;
+}
+
+.badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: var(--text-color);
+    color: var(--bg-color);
+    padding: 0.3rem 0.8rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.badge.sold-out {
+    background: #ff3333;
+    color: white;
+}
+
+.product-info {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.product-info h3 {
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}
+
+.product-info p {
+    font-weight: 300;
+    color: var(--gray);
+}
+
+/* Footer */
+footer {
+    background: #0a0a0a;
+    padding: 4rem 3rem 2rem;
+    border-top: 1px solid #222;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.footer-brand h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.footer-bottom {
+    text-align: center;
+    color: var(--gray);
+    font-size: 0.85rem;
+    border-top: 1px solid #222;
+    padding-top: 2rem;
+}
+
+/* Responsive (Mobiles) */
+@media (max-width: 768px) {
+    nav { padding: 1rem; }
+    .nav-links { display: none; } /* Menu burger à faire plus tard */
+    .hero-content h1 { font-size: 3rem; }
+    .products-section { padding: 3rem 1rem; }
+}
