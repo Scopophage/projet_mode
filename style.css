@@ -1,14 +1,15 @@
-/* Variables de couleurs - Thème Ensoleillé */
+/* Définition de la palette de couleurs ensoleillée */
 :root {
-    --bg-color: #fbf5f2; /* Beige chaud et clair */
-    --text-color: #4a4a4a; /* Brun doux */
-    --accent-color: #f1c40f; /* Jaune doré */
+    --bg-color: #fbf5f2; /* Beige clair et chaud */
+    --text-color: #4a4a4a; /* Brun doux pour le texte */
+    --accent-color: #f1c40f; /* Jaune doré pour les accents */
     --secondary-accent: #e67e22; /* Orange chaleureux */
-    --gray: #9b9b9b; /* Gris moyen */
     --white: #ffffff;
+    --gray-light: #f2f2f2;
+    --gray-medium: #ddd;
 }
 
-/* Reset de base */
+/* Réinitialisation de base */
 * {
     margin: 0;
     padding: 0;
@@ -22,6 +23,7 @@ body {
     overflow-x: hidden;
 }
 
+/* Stylisation des titres et éléments majeurs */
 h1, h2, h3, .logo, .marquee, .btn-primary {
     font-family: 'Oswald', sans-serif;
     text-transform: uppercase;
@@ -37,7 +39,7 @@ a:hover {
     color: var(--secondary-accent);
 }
 
-/* Navigation */
+/* Stylisation de la barre de navigation */
 nav {
     position: fixed;
     top: 0;
@@ -52,10 +54,10 @@ nav {
 }
 
 nav.scrolled {
-    background: rgba(251, 245, 242, 0.95); /* Légèrement transparent */
+    background: rgba(251, 245, 242, 0.95);
     backdrop-filter: blur(10px);
     padding: 1rem 3rem;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--gray-light);
 }
 
 .nav-links a, .nav-icons a {
@@ -75,7 +77,7 @@ nav.scrolled {
     letter-spacing: 2px;
 }
 
-/* Marquee (Bandeau défilant) */
+/* Stylisation du bandeau défilant */
 .marquee {
     margin-top: 80px; /* Espace pour la navbar */
     background: var(--accent-color);
@@ -98,11 +100,11 @@ nav.scrolled {
     100% { transform: translateX(-50%); }
 }
 
-/* Hero Section */
+/* Stylisation de la section Hero */
 .hero {
     height: 85vh;
-    /* Dégradé de couleurs chaudes */
-    background: linear-gradient(135deg, rgba(251, 197, 10, 0.3), rgba(230, 126, 34, 0.3)), url('https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?auto=format&fit=crop&w=1920&q=80') center/cover;
+    /* Utilisation d'un dégradé chaleureux comme fond pour l'image */
+    background: linear-gradient(135deg, rgba(251, 197, 10, 0.3), rgba(230, 126, 34, 0.3)), url('https://source.unsplash.com/1920x1080/?fashion,urban,sunlight') center/cover;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -122,6 +124,7 @@ nav.scrolled {
     margin-bottom: 2rem;
 }
 
+/* Stylisation du bouton principal */
 .btn-primary {
     background: var(--accent-color);
     color: var(--text-color);
@@ -139,79 +142,19 @@ nav.scrolled {
     transform: translateY(-2px);
 }
 
-/* Collections Section */
-.collections-section {
+/* Stylisation des sections générales */
+.products-section, .collections-section, .about-section, .testimonials-section {
     padding: 5rem 3rem;
-    background-color: var(--white);
 }
 
-.collections-section h2 {
+h2 {
     font-size: 2.5rem;
     margin-bottom: 3rem;
     text-align: center;
     letter-spacing: 2px;
 }
 
-.collection-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-}
-
-.collection-card {
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-}
-
-.collection-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-}
-
-.collection-card:hover img {
-    transform: scale(1.05);
-}
-
-.collection-info {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    padding: 1.5rem;
-    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-    color: var(--white);
-    transition: background 0.5s ease;
-}
-
-.collection-card:hover .collection-info {
-    background: linear-gradient(to top, rgba(0,0,0,1), transparent);
-}
-
-.collection-info h3 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-}
-
-.collection-info p {
-    font-size: 1rem;
-    font-weight: 300;
-}
-
-/* Produits */
-.products-section {
-    padding: 5rem 3rem;
-}
-
-.products-section h2 {
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
-    text-align: center;
-    letter-spacing: 2px;
-}
-
+/* Stylisation de la grille de produits */
 .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -230,7 +173,7 @@ nav.scrolled {
 .img-container {
     position: relative;
     overflow: hidden;
-    background: #e6e6e6; /* Gris clair pour les images */
+    background: var(--gray-light);
     aspect-ratio: 3/4;
 }
 
@@ -246,6 +189,7 @@ nav.scrolled {
     opacity: 0.8;
 }
 
+/* Stylisation des badges */
 .badge {
     position: absolute;
     top: 10px;
@@ -259,10 +203,11 @@ nav.scrolled {
 }
 
 .badge.sold-out {
-    background: #e74c3c; /* Rouge vif pour 'sold out' */
-    color: white;
+    background: #e74c3c;
+    color: var(--white);
 }
 
+/* Stylisation des infos produits */
 .product-info {
     margin-top: 1.5rem;
     display: flex;
@@ -277,13 +222,18 @@ nav.scrolled {
 
 .product-info p {
     font-weight: 300;
-    color: var(--gray);
+    color: var(--gray-medium);
 }
 
-/* Notre Histoire */
-.about-section {
-    padding: 5rem 3rem;
+/* Stylisation des autres sections */
+.collections-section, .about-section, .testimonials-section {
     background-color: var(--white);
+}
+
+.collection-grid, .testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
 }
 
 .about-content {
@@ -292,55 +242,11 @@ nav.scrolled {
     text-align: center;
 }
 
-.about-content h2 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-    letter-spacing: 2px;
-}
-
-.about-content p {
-    font-size: 1.2rem;
-    color: var(--text-color);
-    line-height: 1.6;
-}
-
-/* Témoignages */
-.testimonials-section {
-    padding: 5rem 3rem;
-}
-
-.testimonials-section h2 {
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
-    text-align: center;
-    letter-spacing: 2px;
-}
-
-.testimonial-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-}
-
-.testimonial-card {
-    padding: 2rem;
-    background-color: var(--white);
-    border: 1px solid #eee;
-    text-align: center;
-}
-
-.testimonial-card p {
-    font-size: 1rem;
-    font-weight: 300;
-    color: var(--gray);
-    line-height: 1.5;
-}
-
-/* Footer */
+/* Stylisation du footer */
 footer {
-    background: #f2f2f2;
+    background: var(--gray-light);
     padding: 4rem 3rem 2rem;
-    border-top: 1px solid #ddd;
+    border-top: 1px solid var(--gray-medium);
 }
 
 .footer-content {
@@ -348,32 +254,10 @@ footer {
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 2rem;
-    margin-bottom: 3rem;
-}
-
-.footer-brand h2 {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-}
-
-.footer-links {
-    display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
 }
 
 .footer-bottom {
     text-align: center;
-    color: var(--gray);
-    font-size: 0.85rem;
-    border-top: 1px solid #ddd;
-    padding-top: 2rem;
-}
-
-/* Responsive (Mobiles) */
-@media (max-width: 768px) {
-    nav { padding: 1rem; }
-    .nav-links { display: none; } /* Menu burger à faire plus tard */
-    .hero-content h1 { font-size: 3rem; }
-    .products-section, .collections-section, .about-section, .testimonials-section { padding: 3rem 1rem; }
+    color: var(--gray-medium);
+    margin-top: 2rem;
 }
